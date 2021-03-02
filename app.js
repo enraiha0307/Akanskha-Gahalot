@@ -1,4 +1,6 @@
-const myfullpage = new fullpage('#fullpage');
+const myfullpage = new fullpage('#fullpage',{
+    anchors:['Home', 'Projects','AboutMe']
+});
 
 function init(){
 
@@ -9,6 +11,7 @@ function init(){
     const social = document.querySelectorAll(".social");
     const logo = document.querySelector(".logo");
     const hlines = document.querySelectorAll(".menu line");
+    const navLinks = document.querySelectorAll(".nav-links  a ");
     
     const tl = new TimelineMax( {paused: 'true', reversed: 'true' } );
     tl.to(navOpen, 0.5, {y:0})
@@ -21,6 +24,15 @@ function init(){
     hamburger.addEventListener("click", () => {
         tl.reversed() ? tl.play() : tl.reverse();
     });
+
+    navLinks.forEach((navLink)=>{
+
+    navLink.addEventListener("click", () => {
+        tl.reverse();
+    }
+    )});
+    
+
     }
     init();
 //Parallax-----------------------------------------------
@@ -164,3 +176,6 @@ function copy() {
   }
   
   document.querySelector("#copy").addEventListener("click", copy);
+
+
+  
